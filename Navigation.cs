@@ -9,14 +9,23 @@ namespace Assignment6
 {
     public class Navigation
     {
-        int specialNum = 1;
-        int discountPrice = 0;
-        DateTime date = DateTime.Now;
+        //Fields
+        int specialNum;
+        string name;
+        int discountPrice;
+        DateTime date;
 
+        //Properties
         public int SpecialNum
         {
             get => specialNum;
             set => specialNum = value;
+        }
+
+        public string Name
+        {
+            get => name;
+            set => name = Validator.IsStringValid(value) ? value : throw new ArgumentException("Invalid name");
         }
 
         public int DiscountPrice
@@ -31,5 +40,8 @@ namespace Assignment6
             set => date = Validator.IsDateValid(value) ? value : throw new ArgumentException("Invalid date");
         }
 
+        //Constractors
+
+        //Methods
     }
 }
