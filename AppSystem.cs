@@ -8,15 +8,17 @@ namespace Assignment6.Utilities
 {
     public abstract class AppSystem
     {
-        int specialNum = 1;
-        string appName = "App System";
-        int discountPrice = 0;
-        DateTime date = DateTime.Now;
+        //Fields
+        int specialNum;
+        string appName;
+        int discountPrice;
+        DateTime date;
 
+        //Properties
         public int SpecialNum
         {
             get => specialNum;
-            set => specialNum = value;
+            set => specialNum = value; //Removed set??
         }
 
         public string AppName
@@ -37,6 +39,26 @@ namespace Assignment6.Utilities
             set => date = Validator.IsDateValid(value) ? value : throw new ArgumentException("Invalid date"); 
         }
 
+        //Constructors
+        public AppSystem(string appName, int discountPrice)
+        {
+            AppName = appName;
+            DiscountPrice = discountPrice;
+            SpecialNum = 1 + this.SpecialNum;
+            Date = DateTime.Today;
+        }
 
+        //Methods
+        public override string ToString()
+        {
+            return $"App Name: {AppName}, Special Number: {SpecialNum}, Discount Price: {DiscountPrice}, Date: {Date.ToShortDateString()}";
+        }
+
+        public abstract string AppSystemPurpose(); //That's good enough??
+
+        public interface IComparable //Like this??
+        {
+            bool CompareTo(AppSystem other);
+        }
     }
 }
