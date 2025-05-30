@@ -1,5 +1,7 @@
 # Cs-Matala-6
-
-ToDO:
-    AppSystem - method for generate specialNum (maybe though rand & appName?)
-    Navigation - ... 
+AppSystem
+ - method for generate specialNum (maybe though rand & appName?)
+Navigation
+ - understand wtf they want
+ Social
+ - create and check  
