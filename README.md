@@ -50,11 +50,23 @@ Simulates a mobile device managing apps (Navigation, Social, etc.) to practice O
 - [ ] `AppSystemPurpose()` + `ToString()`
 
 ### MobileDevice
-- [ ] Create class and fields
-- [ ] Add app list management
-- [ ] Handle login + retry limit logic
-- [ ] Add methods: `AddApp`, `PopularNavigationApp()`, `ShowListAppNavigation()`, `ToString()`, `login()`
-- [ ] User menu in `Main`
+- [ ] Create class and fields (username, password, app array, login attempts)
+- [ ] AddApp: checks for duplicates and stores apps
+- [ ] login(): manages blocked state, 3 and 9 attempt rules
+- [ ] PopularNavigationApp()
+- [ ] ShowListAppNavigation()
+- [ ] ToString(): list all apps
+
+### Main (Program.cs)
+- [ ] Create MobileDevice instance
+- [ ] Handle user login logic
+- [ ] Show menu:
+  - [ ] Add app (Social/Navigation)
+  - [ ] Show most popular nav app
+  - [ ] Navigate to address
+  - [ ] Print all apps
+  - [ ] Sort apps array
+  - [ ] Exit
 
 ---
 
