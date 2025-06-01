@@ -7,13 +7,16 @@ using Assignment6.Utilities;
 
 namespace Assignment6
 {
-    public class Social : IApp
+    public class Social : AppSystem ,IApp
     {
+        //static field to keep track of the number of social apps created
+        private static int socialAppCount = 1;
+
         //Fields
         int socialSpecialNum;
         string socialName;
-        int discountPrice;
-        DateTime date;
+        int socialDiscountPrice;
+        DateTime socialdate;
 
         int rating; //1-5
         bool isForOrganization;
@@ -23,22 +26,22 @@ namespace Assignment6
         public int SocialSpecialNum
         {
             get => socialSpecialNum;
-            set => socialSpecialNum = value; //Removed set??
+            private set => socialSpecialNum = value;
         }
         public string SocialName
         {
             get => socialName;
             set => socialName = Validator.IsStringValid(value) ? value : throw new ArgumentException("Invalid social name");
         }
-        public int DiscountPrice
+        public int SocialDiscountPrice
         {
-            get => discountPrice;
-            set => discountPrice = Validator.IsPriceValid(value) ? value : throw new ArgumentException("Invalid discount price");
+            get => socialDiscountPrice;
+            set => socialDiscountPrice = Validator.IsPriceValid(value) ? value : throw new ArgumentException("Invalid discount price");
         }
-        public DateTime Date
+        public DateTime Socialdate
         {
-            get => date;
-            set => date = Validator.IsDateValid(value) ? value : throw new ArgumentException("Invalid date");
+            get => socialdate;
+            set => socialdate = Validator.IsDateValid(value) ? value : throw new ArgumentException("Invalid date");
         }
         public int Rating
         {
@@ -52,21 +55,29 @@ namespace Assignment6
         }
 
         //Constructors
-        public Social(string socialName, int discountPrice, int rating, bool isForOrganization)
+        public Social(string socialName, int discountPrice, int rating, bool isForOrganization) : base("Social App", discountPrice)
         {
             SocialName = socialName;
             DiscountPrice = discountPrice;
             Rating = rating;
             IsForOrganization = isForOrganization;
-            SocialSpecialNum = 1 + this.SocialSpecialNum;
-            Date = DateTime.Today;
+            SocialSpecialNum = socialAppCount++;
+            socialdate = DateTime.Today;
         }
 
         //Methods
         public int AddVAT()
         {
             //Console.WriteLine("Adding VAT to the product price.");
-            return (int)(DiscountPrice * VAT_RATE);
+            return (int)(SocialDiscountPrice * VAT_RATE);
+        }
+        public override string AppSystemPurpose()
+        {
+            return "Far away and talking close";
+        }
+        public override string ToString()
+        {
+            return $"{base.ToString()}, Social Name: {SocialName}, Rating: {Rating}, Is For Organization: {IsForOrganization}";
         }
     }
 }
