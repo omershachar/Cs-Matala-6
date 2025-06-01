@@ -1,0 +1,137 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\omer\\Desktop\\Assignment6\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|C:\\Users\\omer\\Desktop\\Assignment6\\assignment6\\social.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|solutionrelative:assignment6\\social.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|C:\\Users\\omer\\Desktop\\Assignment6\\assignment6\\appsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|solutionrelative:assignment6\\appsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|c:\\users\\omer\\desktop\\assignment6\\assignment6\\iapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|solutionrelative:assignment6\\iapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|C:\\Users\\omer\\Desktop\\Assignment6\\assignment6\\validator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|solutionrelative:assignment6\\validator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|C:\\Users\\omer\\Desktop\\Assignment6\\assignment6\\navigationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|solutionrelative:assignment6\\navigationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|C:\\Users\\omer\\Desktop\\Assignment6\\assignment6\\navigation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|solutionrelative:assignment6\\navigation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|C:\\Users\\omer\\Desktop\\Assignment6\\assignment6\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{144A2DA2-8896-4A61-B84B-6B5CDB10A79C}|Assignment6\\Assignment6.csproj|solutionrelative:assignment6\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\Program.cs",
+              "RelativeDocumentMoniker": "Assignment6\\Program.cs",
+              "ToolTip": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\Program.cs",
+              "RelativeToolTip": "Assignment6\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T09:12:23.231Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Validator.cs",
+              "DocumentMoniker": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\Validator.cs",
+              "RelativeDocumentMoniker": "Assignment6\\Validator.cs",
+              "ToolTip": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\Validator.cs",
+              "RelativeToolTip": "Assignment6\\Validator.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T09:38:58.794Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IApp.cs",
+              "DocumentMoniker": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\IApp.cs",
+              "RelativeDocumentMoniker": "Assignment6\\IApp.cs",
+              "ToolTip": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\IApp.cs",
+              "RelativeToolTip": "Assignment6\\IApp.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T08:30:24.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Social.cs",
+              "DocumentMoniker": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\Social.cs",
+              "RelativeDocumentMoniker": "Assignment6\\Social.cs",
+              "ToolTip": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\Social.cs",
+              "RelativeToolTip": "Assignment6\\Social.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAcwEgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T08:20:33.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppSystem.cs",
+              "DocumentMoniker": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\AppSystem.cs",
+              "RelativeDocumentMoniker": "Assignment6\\AppSystem.cs",
+              "ToolTip": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\AppSystem.cs",
+              "RelativeToolTip": "Assignment6\\AppSystem.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAUwDgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T08:55:08.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NavigationManager.cs",
+              "DocumentMoniker": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\NavigationManager.cs",
+              "RelativeDocumentMoniker": "Assignment6\\NavigationManager.cs",
+              "ToolTip": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\NavigationManager.cs",
+              "RelativeToolTip": "Assignment6\\NavigationManager.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAEgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T14:41:34.881Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Navigation.cs",
+              "DocumentMoniker": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\Navigation.cs",
+              "RelativeDocumentMoniker": "Assignment6\\Navigation.cs",
+              "ToolTip": "C:\\Users\\omer\\Desktop\\Assignment6\\Assignment6\\Navigation.cs",
+              "RelativeToolTip": "Assignment6\\Navigation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T14:37:29.025Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
