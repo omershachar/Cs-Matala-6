@@ -219,7 +219,7 @@ namespace Assignment6
             try
             {
                 selectedNav.Manager.AddAddress(destination);
-                Console.WriteLine("Address added to recent locations.");
+                Console.WriteLine($"Safe travels to {destination}!");
                 selectedNav.Manager.ShowRecentLocations();
             }
             catch (Exception ex)
