@@ -72,7 +72,7 @@ namespace Assignment6
 
         public override string ToString()
         {
-            return $"{base.ToString()}, Navigation Name: {NavigationName}, Manager: {Manager}";
+            return $"{base.ToString()}, Navigation Name: {NavigationName}, {Manager}, Price with VAT: {AddVAT()}, Purpose: {AppSystemPurpose()}";
         }
     }
 }

@@ -80,7 +80,7 @@ namespace Assignment6
 
         public override string ToString()
         {
-            return $"{base.ToString()}, Social Name: {SocialName}, Rating: {Rating}, Is For Organization: {IsForOrganization}";
+            return $"{base.ToString()}, Social Name: {SocialName}, Rating: {Rating}, Is For Organization: {IsForOrganization}, Price with VAT: {AddVAT()}, Purpose: {AppSystemPurpose()}";
         }
     }
 }
