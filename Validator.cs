@@ -17,5 +17,9 @@ namespace Assignment6.Utilities
             => date != DateTime.MinValue && date != DateTime.MaxValue;
         public static bool IsPriceValid(int price)
             => price >= 0 && IsNumberValid(price.ToString());
+        public static bool IsPasswordValid(string password)
+            => !string.IsNullOrWhiteSpace(password);
+        public static bool IsBoolValid(bool value)
+            => value == true || value == false;
     }
 }
