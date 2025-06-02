@@ -10,7 +10,6 @@ namespace Assignment6.Utilities
     {
         public static bool IsStringValid(string str)
             => !string.IsNullOrWhiteSpace(str) && str.All(char.IsLetter);
-
         public static bool IsNumberValid(string num)
             => !string.IsNullOrWhiteSpace(num) && num.All(char.IsDigit);
         public static bool IsDateValid(DateTime date)

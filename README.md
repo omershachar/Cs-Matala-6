@@ -19,7 +19,7 @@ Simulates a mobile device managing apps (Navigation, Social, etc.) to practice O
 
 | Priority | Task                            | Time     | Status |
 |----------|----------------------------------|----------|--------|
-| 🔴 High  | Finish `Login()` logic           | ~30 min  | [ ]    |
+| 🔴 High  | Finish `Login()` logic           | ~30 min  | [x]    |
 | 🔴 High  | Complete `Navigation` constructor| ~45 min  | [ ]    |
 | 🔴 High  | Update `Program.cs` for nav app  | ~1 hr    | [ ]    |
 | 🟡 Med   | Implement `SortApps()` in device | ~30 min  | [ ]    |
@@ -27,4 +27,4 @@ Simulates a mobile device managing apps (Navigation, Social, etc.) to practice O
 
 ---
 
-Contact me for more useless assignments.
+Contact me for more useless assignments. <ContactMeButton>
