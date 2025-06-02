@@ -16,7 +16,7 @@ namespace Assignment6
         int socialSpecialNum;
         string socialName;
         int socialDiscountPrice;
-        DateTime socialdate;
+        DateTime socialDate;
 
         int rating; //1-5
         bool isForOrganization;
@@ -38,10 +38,10 @@ namespace Assignment6
             get => socialDiscountPrice;
             set => socialDiscountPrice = Validator.IsPriceValid(value) ? value : throw new ArgumentException("Invalid discount price");
         }
-        public DateTime Socialdate
+        public DateTime SocialDate
         {
-            get => socialdate;
-            set => socialdate = Validator.IsDateValid(value) ? value : throw new ArgumentException("Invalid date");
+            get => SocialDate;
+            set => SocialDate = Validator.IsDateValid(value) ? value : throw new ArgumentException("Invalid date");
         }
         public int Rating
         {
@@ -62,7 +62,7 @@ namespace Assignment6
             Rating = rating;
             IsForOrganization = isForOrganization;
             SocialSpecialNum = socialAppCount++;
-            socialdate = DateTime.Today;
+            SocialDate = DateTime.Today;
         }
 
         //Methods
