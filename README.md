@@ -15,58 +15,15 @@ Simulates a mobile device managing apps (Navigation, Social, etc.) to practice O
 
 ---
 
-## TODO
+## 🕒 Remaining Tasks (Priority & Time Estimates)
 
-### AppSystem
-- [x] Created abstract class
-- [x] Common fields: appName, price
-- [x] Abstract method `AppSystemPurpose()`
-- [x] Base `ToString()` logic
-- [ ] Maybe add abstract `specialNum` generator if needed (by name or random)
-
-### IApp
-- [x] Interface created
-- [x] `AddVAT()` declared
-
-### Validator
-- [x] Static methods for: string, price, date
-
-### Social
-- [x] Inherits from `AppSystem`
-- [x] Implements `IApp`
-- [x] Fields: ID, name, price, rating, date, isForOrg
-- [x] VAT calculation (via constant 1.13)
-- [x] Validations via `Validator`
-- [x] Static counter for unique ID
-- [x] `AppSystemPurpose()` + `ToString()`
-- [ ] Verify if final abstract method from AppSystem is handled (recheck spec)
-
-### Navigation
-- [x] Class created
-- [ ] Understand manager/destination array logic
-- [ ] Implement vehicle enum and related fields
-- [ ] Add address logic, `AddAddress()`, `ShowRecentLocations()`
-- [ ] VAT logic (`AddVAT()`)
-- [ ] `AppSystemPurpose()` + `ToString()`
-
-### MobileDevice
-- [ ] Create class and fields (username, password, app array, login attempts)
-- [ ] AddApp: checks for duplicates and stores apps
-- [ ] login(): manages blocked state, 3 and 9 attempt rules
-- [ ] PopularNavigationApp()
-- [ ] ShowListAppNavigation()
-- [ ] ToString(): list all apps
-
-### Main (Program.cs)
-- [ ] Create MobileDevice instance
-- [ ] Handle user login logic
-- [ ] Show menu:
-  - [ ] Add app (Social/Navigation)
-  - [ ] Show most popular nav app
-  - [ ] Navigate to address
-  - [ ] Print all apps
-  - [ ] Sort apps array
-  - [ ] Exit
+| Priority | Task                            | Time     | Status |
+|----------|----------------------------------|----------|--------|
+| 🔴 High  | Finish `Login()` logic           | ~30 min  | [ ]    |
+| 🔴 High  | Complete `Navigation` constructor| ~45 min  | [ ]    |
+| 🔴 High  | Update `Program.cs` for nav app  | ~1 hr    | [ ]    |
+| 🟡 Med   | Implement `SortApps()` in device | ~30 min  | [ ]    |
+| 🟢 Low   | Final testing + polishing        | ~1–2 hrs | [ ]    |
 
 ---
 
