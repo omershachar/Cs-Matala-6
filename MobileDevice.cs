@@ -1,172 +1,180 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
+using Assignment6;
 using Assignment6.Utilities;
 
 namespace Assignment6
 {
-    public class MobileDevice : AppSystem
+    class Program
     {
-        // Fields
-        string deviceName;
-        string devicePassword;
-        bool isActive;
-        int loginAttempts;
-        AppSystem[] apps;
-        int appCount;
-        bool isBlocked = false;
-
-        // Properties
-        public string DeviceName
+        static void Main(string[] args)
         {
-            get => deviceName;
-            set => deviceName = Validator.IsStringValid(value) ? value : throw new ArgumentException("Invalid device name");
-        }
+            Console.Title = "App Manager";
 
-        public string DevicePassword
-        {
-            get => devicePassword;
-            set => devicePassword = Validator.IsPasswordValid(value) ? value : throw new ArgumentException("Invalid device password");
-        }
-
-        public bool IsActive
-        {
-            get => isActive;
-            set => isActive = value;
-        }
-
-        public int LoginAttempts
-        {
-            get => loginAttempts;
-            set => loginAttempts = (value >= 0) ? value : throw new ArgumentOutOfRangeException(nameof(value), "Login attempts cannot be negative");
-        }
-
-        public AppSystem[] Apps
-        {
-            get => apps;
-            set => apps = value ?? throw new ArgumentNullException(nameof(value), "Apps cannot be null");
-        }
-
-        public int AppCount
-        {
-            get => appCount;
-            set => appCount = (value >= 0) ? value : throw new ArgumentOutOfRangeException(nameof(value), "App count cannot be negative");
-        }
-
-        // Constructor
-        public MobileDevice(string deviceName, string devicePassword) : base(deviceName, 0)
-        {
-            DeviceName = deviceName;
-            DevicePassword = devicePassword;
-            IsActive = false;
-            LoginAttempts = 0;
-            Apps = new AppSystem[10];
-            AppCount = 0;
-        }
-
-        // Methods
-        public bool Login(string user, string pass)
-        {
-            if (isBlocked)
-                throw new Exception("Device is blocked");
-
-            if (user == DeviceName && pass == DevicePassword)
+            MobileDevice[] devices = new MobileDevice[]
             {
-                loginAttempts = 0;
-                IsActive = true;
-                return true;
+            new MobileDevice("alice", "1234"),
+            new MobileDevice("bob", "abcd"),
+            new MobileDevice("charlie", "pass")
+            };
+
+            Console.WriteLine("Available devices:");
+            foreach (var device in devices)
+                Console.WriteLine($"Device Name: {device.DeviceName}, Password: (shown for testing) {device.DevicePassword}");
+
+            MobileDevice selectedDevice = null;
+            while (selectedDevice == null)
+            {
+                Console.Write("\nEnter device name to login: ");
+                string inputName = Console.ReadLine();
+
+                foreach (var device in devices)
+                {
+                    if (device.DeviceName == inputName)
+                    {
+                        selectedDevice = device;
+                        break;
+                    }
+                }
+
+                if (selectedDevice == null)
+                    Console.WriteLine("Invalid device name. Try again.");
             }
 
-            loginAttempts++;
-
-            if (loginAttempts % 3 == 0 && loginAttempts < 9)
+            bool loggedIn = false;
+            while (!loggedIn)
             {
-                Console.WriteLine("Too many attempts. Waiting 15 seconds...");
-                Thread.Sleep(15000);
+                Console.Write("Enter password: ");
+                string inputPass = Console.ReadLine();
+
+                try
+                {
+                    if (selectedDevice.Login(selectedDevice.DeviceName, inputPass))
+                    {
+                        Console.WriteLine("Login successful.\n");
+                        loggedIn = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Login failed.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Login error: {ex.Message}");
+                    return;
+                }
             }
 
-            if (loginAttempts >= 9)
+            // Menu loop
+            while (true)
             {
-                isBlocked = true;
-                throw new Exception("Device permanently blocked after 9 failed attempts.");
+                MenuManager.ShowMenu();
+                string option = Console.ReadLine();
+
+                try
+                {
+                    Console.Clear();
+
+                    switch (option)
+                    {
+                        case "1":
+                            AddNewApp(selectedDevice);
+                            break;
+
+                        case "2":
+                            Console.WriteLine(selectedDevice.PopularNavigationApp());
+                            break;
+
+                        case "3":
+                            Console.WriteLine("🚧 Feature not implemented yet.");
+                            break;
+
+                        case "4":
+                            Console.WriteLine(selectedDevice.ToString());
+                            break;
+
+                        case "5":
+                            selectedDevice.SortApps();
+                            Console.WriteLine("Apps sorted by name.");
+                            break;
+
+                        case "6":
+                            Console.WriteLine("Exiting... Press any key to close.");
+                            Console.ReadKey();
+                            return;
+
+                        default:
+                            Console.WriteLine("Invalid option.");
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+
+                MenuManager.Pause();
             }
-
-            return false;
         }
 
-        public void AddApp(AppSystem app)
+
+        static void AddNewApp(MobileDevice device)
         {
-            if (app == null || CompareTo(app))
-                throw new ArgumentException("App cannot be null or already exists on the device.");
-
-            if (AppCount >= Apps.Length)
-                throw new InvalidOperationException("App limit reached.");
-
-            Apps[AppCount++] = app;
-        }
-
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Device Name: {DeviceName}");
-            sb.AppendLine($"Active: {IsActive}");
-            sb.AppendLine($"Login Attempts: {LoginAttempts}");
-            sb.AppendLine("Installed Apps:");
-
-            foreach (var app in Apps.Take(AppCount))
-                sb.AppendLine(app.ToString());
-
-            return sb.ToString();
-        }
-
-        public void showListAppNavigation()
-        {
-            Console.WriteLine("Installed Apps:");
-            for (int i = 0; i < AppCount; i++)
-                Console.WriteLine($"{i + 1}. {Apps[i].AppName}");
-
-            Console.WriteLine("Select an app by number to view details or press 0 to exit.");
-        }
-
-        public string PopularNavigationApp()
-        {
-            string s = "Popular Apps:";
-            foreach (var app in Apps.Take(AppCount).OrderByDescending(a => a.DiscountPrice).Take(5))
+            try
             {
-                s += $" {app.AppName}";
+                Console.Write("Choose app type (1 = Social, 2 = Navigation): ");
+                string type = Console.ReadLine();
+
+                Console.Write("App name: ");
+                string name = Console.ReadLine();
+
+                Console.Write("App price: ");
+                if (!int.TryParse(Console.ReadLine(), out int price))
+                    throw new ArgumentException("Invalid price format.");
+
+                if (type == "1") // Social
+                {
+                    Console.Write("Rating (1-5): ");
+                    if (!int.TryParse(Console.ReadLine(), out int rating))
+                        throw new ArgumentException("Invalid rating.");
+
+                    Console.Write("Is for organization? (true/false): ");
+                    if (!bool.TryParse(Console.ReadLine(), out bool isOrg))
+                        throw new ArgumentException("Invalid input for organization flag.");
+
+                    Social socialApp = new Social(name, price, rating, isOrg);
+                    device.AddApp(socialApp);
+                }
+                else if (type == "2")
+                {
+                    Console.Write("Current location: ");
+                    string currentLoc = Console.ReadLine();
+
+                    Console.Write("Number of destinations: ");
+                    if (!int.TryParse(Console.ReadLine(), out int count) || count < 0)
+                        throw new ArgumentException("Invalid destination count.");
+
+                    string[] destinations = new string[count];
+                    for (int i = 0; i < count; i++)
+                    {
+                        Console.Write($"Destination {i + 1}: ");
+                        destinations[i] = Console.ReadLine();
+                    }
+
+                    //NavigationManager manager = new NavigationManager(currentLoc, destinations);
+                    //Navigation navApp = new Navigation(name, price, manager);
+                    //device.AddApp(navApp);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid app type.");
+                }
             }
-            return s;
-        }
-
-        public void logout()
-        {
-            IsActive = false;
-            Console.WriteLine("You have been logged out.");
-        }
-
-        public override string AppSystemPurpose()
-        {
-            return "This is a mobile device that can run various applications.";
-        }
-
-        public bool CompareTo(AppSystem other)
-        {
-            if (other == null) return false;
-
-            for (int i = 0; i < AppCount; i++)
+            catch (Exception ex)
             {
-                if (Apps[i].SpecialNum == other.SpecialNum && Apps[i].AppName == other.AppName)
-                    return true;
+                Console.WriteLine($"App creation failed: {ex.Message}");
             }
-
-            return false;
         }
-        public void SortApps()
-        {
-            Array.Sort(Apps, 0, AppCount, Comparer<AppSystem>.Create((a, b) => a.AppName.CompareTo(b.AppName)));
-        }
-
     }
 }
