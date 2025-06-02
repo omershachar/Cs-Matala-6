@@ -1,47 +1,78 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Assignment6.Utilities;
 
 namespace Assignment6
 {
-    public class Navigation
+    public class Navigation : AppSystem, IApp
     {
-        //Fields
-        int specialNum;
-        string name;
-        int discountPrice;
-        DateTime date;
+        // Static counter for unique special numbers
+        private static int navigationAppCount = 1;
 
-        //Properties
-        public int SpecialNum
+        // Fields
+        int navigationSpecialNum;
+        string navigationName;
+        int navigationDiscountPrice;
+        DateTime navigationDate;
+        NavigationManager manager;
+
+        private const double VAT_RATE = 1.13;
+
+        // Properties
+        public int NavigationSpecialNum
         {
-            get => specialNum;
-            set => specialNum = value;
+            get => navigationSpecialNum;
+            private set => navigationSpecialNum = value;
         }
 
-        public string Name
+        public string NavigationName
         {
-            get => name;
-            set => name = Validator.IsStringValid(value) ? value : throw new ArgumentException("Invalid name");
+            get => navigationName;
+            set => navigationName = Validator.IsStringValid(value) ? value : throw new ArgumentException("Invalid navigation name");
         }
 
-        public int DiscountPrice
+        public int NavigationDiscountPrice
         {
-            get => discountPrice;
-            set => discountPrice = Validator.IsPriceValid(value) ? value : throw new ArgumentException("Invalid discount price");
+            get => navigationDiscountPrice;
+            set => navigationDiscountPrice = Validator.IsPriceValid(value) ? value : throw new ArgumentException("Invalid discount price");
         }
 
-        public DateTime Date
+        public DateTime NavigationDate
         {
-            get => date;
-            set => date = Validator.IsDateValid(value) ? value : throw new ArgumentException("Invalid date");
+            get => navigationDate;
+            set => navigationDate = Validator.IsDateValid(value) ? value : throw new ArgumentException("Invalid date");
         }
 
-        //Constractors
+        public NavigationManager Manager
+        {
+            get => manager;
+            set => manager = value ?? throw new ArgumentNullException(nameof(value), "Manager cannot be null");
+        }
 
-        //Methods
+        // Constructor
+        public Navigation(string name, int price, NavigationManager navManager)
+            : base(name, price)
+        {
+            NavigationName = name;
+            NavigationDiscountPrice = price;
+            Manager = navManager;
+            NavigationSpecialNum = navigationAppCount++;
+            NavigationDate = DateTime.Today;
+        }
+
+        // Methods
+        public int AddVAT()
+        {
+            return (int)(NavigationDiscountPrice * VAT_RATE);
+        }
+
+        public override string AppSystemPurpose()
+        {
+            return "Guiding users to their destinations.";
+        }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, Navigation Name: {NavigationName}, Manager: {Manager}";
+        }
     }
 }

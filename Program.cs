@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using Assignment6;
-using Assignment6.Utilities;
 
 namespace Assignment6
 {
@@ -9,38 +8,39 @@ namespace Assignment6
     {
         static void Main(string[] args)
         {
-            Console.Title = "App Manager";
-
-            MobileDevice[] devices = new MobileDevice[]
+            // 1. Predefined users
+            MobileDevice[] users = new MobileDevice[]
             {
-            new MobileDevice("alice", "1234"),
-            new MobileDevice("bob", "abcd"),
-            new MobileDevice("charlie", "pass")
+                new MobileDevice("alice", "1234"),
+                new MobileDevice("bob", "abcd"),
+                new MobileDevice("charlie", "pass")
             };
 
-            Console.WriteLine("Available devices:");
-            foreach (var device in devices)
-                Console.WriteLine($"Device Name: {device.DeviceName}, Password: (shown for testing) {device.DevicePassword}");
+            Console.WriteLine("Available users:");
+            foreach (var user in users)
+                Console.WriteLine($"Username: {user.DeviceName}, Password: (shown for testing) {user.DevicePassword}");
 
+            // 2. User picks a device
             MobileDevice selectedDevice = null;
             while (selectedDevice == null)
             {
-                Console.Write("\nEnter device name to login: ");
-                string inputName = Console.ReadLine();
+                Console.Write("\nEnter username to login: ");
+                string inputUser = Console.ReadLine();
 
-                foreach (var device in devices)
+                foreach (var user in users)
                 {
-                    if (device.DeviceName == inputName)
+                    if (user.DeviceName == inputUser)
                     {
-                        selectedDevice = device;
+                        selectedDevice = user;
                         break;
                     }
                 }
 
                 if (selectedDevice == null)
-                    Console.WriteLine("Invalid device name. Try again.");
+                    Console.WriteLine("Invalid username. Try again.");
             }
 
+            // 3. Login attempt loop
             bool loggedIn = false;
             while (!loggedIn)
             {
@@ -61,119 +61,119 @@ namespace Assignment6
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Login error: {ex.Message}");
-                    return;
+                    Console.WriteLine(ex.Message);
+                    return; // Exit on permanent block
                 }
             }
 
-            // Menu loop
+            // 4. Menu logic
             while (true)
             {
-                MenuManager.ShowMenu();
+                Console.Clear();
+                Console.WriteLine("--- MENU ---");
+                Console.WriteLine("1. Add new app");
+                Console.WriteLine("2. Show most popular navigation app");
+                Console.WriteLine("3. Navigate to address (not yet implemented)");
+                Console.WriteLine("4. Print all installed apps");
+                Console.WriteLine("5. Sort apps");
+                Console.WriteLine("6. Exit");
+
+                Console.Write("Choose: ");
                 string option = Console.ReadLine();
 
-                try
+                switch (option)
                 {
-                    Console.Clear();
+                    case "1":
+                        AddNewApp(selectedDevice);
+                        break;
 
-                    switch (option)
-                    {
-                        case "1":
-                            AddNewApp(selectedDevice);
-                            break;
+                    case "2":
+                        try
+                        {
+                            string nav = selectedDevice.PopularNavigationApp();
+                            Console.WriteLine(nav);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        break;
 
-                        case "2":
-                            Console.WriteLine(selectedDevice.PopularNavigationApp());
-                            break;
+                    case "3":
+                        Console.WriteLine("🚧 Navigation to address not implemented yet.");
+                        break;
 
-                        case "3":
-                            Console.WriteLine("🚧 Feature not implemented yet.");
-                            break;
+                    case "4":
+                        Console.WriteLine(selectedDevice.ToString());
+                        break;
 
-                        case "4":
-                            Console.WriteLine(selectedDevice.ToString());
-                            break;
+                    case "5":
+                        selectedDevice.SortApps();
+                        Console.WriteLine("Apps sorted.");
+                        break;
 
-                        case "5":
-                            selectedDevice.SortApps();
-                            Console.WriteLine("Apps sorted by name.");
-                            break;
+                    case "6":
+                        Console.WriteLine("Bye bye.");
+                        return;
 
-                        case "6":
-                            Console.WriteLine("Exiting... Press any key to close.");
-                            Console.ReadKey();
-                            return;
-
-                        default:
-                            Console.WriteLine("Invalid option.");
-                            break;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error: {ex.Message}");
+                    default:
+                        Console.WriteLine("Invalid option.");
+                        break;
                 }
 
-                MenuManager.Pause();
+                Console.WriteLine("Press any key to return to menu...");
+                Console.ReadKey();
             }
         }
-
-
+        // 5. Method to add a new app
         static void AddNewApp(MobileDevice device)
         {
-            try
+            Console.Write("Choose app type (1 = Social, 2 = Navigation): ");
+            string type = Console.ReadLine();
+
+            Console.Write("App name: ");
+            string name = Console.ReadLine();
+
+            Console.Write("App price: ");
+            int price = int.Parse(Console.ReadLine());
+
+            if (type == "1") // Social
             {
-                Console.Write("Choose app type (1 = Social, 2 = Navigation): ");
-                string type = Console.ReadLine();
+                Console.Write("Rating (1-5): ");
+                int rating = int.Parse(Console.ReadLine());
 
-                Console.Write("App name: ");
-                string name = Console.ReadLine();
+                Console.Write("Is for organization? (true/false): ");
+                bool isOrg = bool.Parse(Console.ReadLine());
 
-                Console.Write("App price: ");
-                if (!int.TryParse(Console.ReadLine(), out int price))
-                    throw new ArgumentException("Invalid price format.");
-
-                if (type == "1") // Social
-                {
-                    Console.Write("Rating (1-5): ");
-                    if (!int.TryParse(Console.ReadLine(), out int rating))
-                        throw new ArgumentException("Invalid rating.");
-
-                    Console.Write("Is for organization? (true/false): ");
-                    if (!bool.TryParse(Console.ReadLine(), out bool isOrg))
-                        throw new ArgumentException("Invalid input for organization flag.");
-
-                    Social socialApp = new Social(name, price, rating, isOrg);
-                    device.AddApp(socialApp);
-                }
-                else if (type == "2")
-                {
-                    Console.Write("Current location: ");
-                    string currentLoc = Console.ReadLine();
-
-                    Console.Write("Number of destinations: ");
-                    if (!int.TryParse(Console.ReadLine(), out int count) || count < 0)
-                        throw new ArgumentException("Invalid destination count.");
-
-                    string[] destinations = new string[count];
-                    for (int i = 0; i < count; i++)
-                    {
-                        Console.Write($"Destination {i + 1}: ");
-                        destinations[i] = Console.ReadLine();
-                    }
-
-                    //NavigationManager manager = new NavigationManager(currentLoc, destinations);
-                    //Navigation navApp = new Navigation(name, price, manager);
-                    //device.AddApp(navApp);
-                }
-                else
-                {
-                    Console.WriteLine("Invalid app type.");
-                }
+                Social socialApp = new Social(name, price, rating, isOrg);
+                device.AddApp(socialApp);
             }
-            catch (Exception ex)
+            else if (type == "2")
             {
-                Console.WriteLine($"App creation failed: {ex.Message}");
+                Console.Write("Current location: ");
+                string currentLoc = Console.ReadLine();
+
+                Console.Write("Choose navigation type (Car, Bike, Walk): ");
+                NavigationType navType = (NavigationType)Enum.Parse(typeof(NavigationType), Console.ReadLine(), true);
+
+                NavigationManager manager = new NavigationManager(currentLoc, navType);
+
+                Console.Write("Number of destinations: ");
+                int count = int.Parse(Console.ReadLine());
+
+                for (int i = 0; i < count; i++)
+                {
+                    Console.Write($"Destination {i + 1}: ");
+                    string destination = Console.ReadLine();
+                    manager.AddAddress(destination);
+                }
+
+                Navigation navApp = new Navigation(name, price, manager);
+                device.AddApp(navApp);
+            }
+            else
+            {
+                Console.WriteLine("Invalid app type.");
             }
         }
     }
