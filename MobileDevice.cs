@@ -8,7 +8,7 @@ using Assignment6.Utilities;
 
 namespace Assignment6
 {
-    public class MobileDevice //: AppSystem;
+    public class MobileDevice : AppSystem
     {
         //Fields
         string deviceName;
@@ -26,13 +26,13 @@ namespace Assignment6
         }
         public string DevicePassword
         {
-            get => devicePassword;
-            set => devicePassword = Validator.IsStringValid(value) ? value : throw new ArgumentException("Invalid device password");
+            private get => devicePassword;
+            set => devicePassword = Validator.IsPasswordValid(value) ? value : throw new ArgumentException("Invalid device password");
         }
         public bool IsActive
         {
             get => isActive;
-            set => isActive = value;
+            set => isActive = Validator.IsBoolValid(value) ? value : throw new ArgumentException("Invalid boolean value");
         }
         public int LoginAttempts
         {
@@ -47,11 +47,11 @@ namespace Assignment6
         public int AppCount
         {
             get => appCount;
-            set => appCount = (value >= 0) ? value : throw new ArgumentOutOfRangeException(nameof(value), "App count cannot be negative");
+            set => appCount = (value <= 0) ? value : throw new ArgumentOutOfRangeException(nameof(value), "App count cannot be negative");
         }
 
         //Constructor
-        public MobileDevice(string deviceName, string devicePassword)
+        public MobileDevice(string deviceName, string devicePassword) : base(deviceName, 0)
         {
             DeviceName = deviceName;
             DevicePassword = devicePassword;
@@ -64,29 +64,13 @@ namespace Assignment6
         //Methods
         public void AddApp(AppSystem app)
         {
-            if (AppCount < Apps.Length)
+            if (app == null || CompareTo(app))
+            {
+                throw new ArgumentException("App cannot be null or already exists on the device.");
+            }
+            else
             {
                 Apps[AppCount++] = app;
-            }
-            else
-            {
-                throw new InvalidOperationException("Cannot add more apps, capacity reached.");
-            }
-        }
-        public void RemoveApp(AppSystem app)
-        {
-            int index = Array.IndexOf(Apps, app);
-            if (index >= 0 && index < AppCount)
-            {
-                for (int i = index; i < AppCount - 1; i++)
-                {
-                    Apps[i] = Apps[i + 1];
-                }
-                Apps[--AppCount] = null; // Clear the last element
-            }
-            else
-            {
-                throw new ArgumentException("App not found on the device.");
             }
         }
         public override string ToString()
@@ -111,7 +95,7 @@ namespace Assignment6
             }
             Console.WriteLine("Select an app by number to view details or press 0 to exit.");
         }
-        public void poplarNavigationApp()
+        public void popularNavigationApp()
         {
             Console.WriteLine("Popular Apps:");
             foreach (var app in Apps.Take(AppCount).OrderByDescending(a => a.DiscountPrice).Take(5))
@@ -134,14 +118,36 @@ namespace Assignment6
             else
             {
                 LoginAttempts++;
-                Console.WriteLine("Incorrect password. Try again.");
                 if (LoginAttempts >= 3)
                 {
                     IsActive = false;
-                    Console.WriteLine("Too many failed attempts. Device is now inactive.");
+                    Console.WriteLine("Wait 15 seconds before trying again...");
+                    System.Threading.Thread.Sleep(15000); // Wait for 15 seconds
                 }
+                Console.WriteLine("Incorrect password. Try again.");
             }
         }
+        public void logout()
+        {
+            IsActive = false;
+            Console.WriteLine("You have been logged out.");
+        }
 
+        public override string AppSystemPurpose()
+        {
+            return "This is a mobile device that can run various applications.";
+        }
+        public bool CompareTo(AppSystem other)
+        {
+            if (other == null) return false;
+            for (int i = 0; i < AppCount; i++) //Going through the array
+            {
+                if (Apps[i].SpecialNum == other.SpecialNum && Apps[i].AppName == other.AppName) //Comparing apps names and special numbers
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
