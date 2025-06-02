@@ -26,7 +26,7 @@ namespace Assignment6
         }
         public string DevicePassword
         {
-            private get => devicePassword;
+            get => devicePassword;
             set => devicePassword = Validator.IsPasswordValid(value) ? value : throw new ArgumentException("Invalid device password");
         }
         public bool IsActive
@@ -95,25 +95,27 @@ namespace Assignment6
             }
             Console.WriteLine("Select an app by number to view details or press 0 to exit.");
         }
-        public void popularNavigationApp()
+        public string PopularNavigationApp()
         {
-            Console.WriteLine("Popular Apps:");
+            string s = "Popular Apps:";
             foreach (var app in Apps.Take(AppCount).OrderByDescending(a => a.DiscountPrice).Take(5))
             {
-                Console.WriteLine(app.AppName);
+                s += app.AppName;
             }
-            Console.WriteLine("Press any key to return to the main menu.");
-            Console.ReadKey();
+            return s;
         }
-        public void login()
+        public bool Login(string name, string password)
         {
+            Console.WriteLine("Enter device name:");
+            string inputName = Console.ReadLine();
             Console.WriteLine("Enter device password:");
             string inputPassword = Console.ReadLine();
-            if (inputPassword == DevicePassword)
+            if (inputPassword == DevicePassword && inputName == DeviceName)
             {
                 IsActive = true;
                 LoginAttempts = 0;
                 Console.WriteLine("Login successful!");
+                return true;
             }
             else
             {
@@ -125,6 +127,7 @@ namespace Assignment6
                     System.Threading.Thread.Sleep(15000); // Wait for 15 seconds
                 }
                 Console.WriteLine("Incorrect password. Try again.");
+                return false;
             }
         }
         public void logout()

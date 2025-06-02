@@ -7,7 +7,7 @@ using Assignment6.Utilities;
 
 namespace Assignment6
 {
-    public class Social : AppSystem ,IApp
+    public class Social : AppSystem, IApp
     {
         //static field to keep track of the number of social apps created
         private static int socialAppCount = 1;
