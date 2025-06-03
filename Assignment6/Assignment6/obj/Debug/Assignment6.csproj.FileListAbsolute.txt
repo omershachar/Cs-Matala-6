@@ -1,0 +1,7 @@
+C:\Users\omer\Desktop\Assignment6\Assignment6\bin\Debug\Assignment6.exe.config
+C:\Users\omer\Desktop\Assignment6\Assignment6\bin\Debug\Assignment6.exe
+C:\Users\omer\Desktop\Assignment6\Assignment6\bin\Debug\Assignment6.pdb
+C:\Users\omer\Desktop\Assignment6\Assignment6\obj\Debug\Assignment6.csproj.AssemblyReference.cache
+C:\Users\omer\Desktop\Assignment6\Assignment6\obj\Debug\Assignment6.csproj.CoreCompileInputs.cache
+C:\Users\omer\Desktop\Assignment6\Assignment6\obj\Debug\Assignment6.exe
+C:\Users\omer\Desktop\Assignment6\Assignment6\obj\Debug\Assignment6.pdb
