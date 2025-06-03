@@ -106,7 +106,7 @@ namespace Assignment6
                 Console.WriteLine("Press any key to return to menu...");
                 Console.ReadKey();
             }
-        }
+        } //End of Main()
 
         static void AddNewApp(MobileDevice device)
         {
@@ -227,5 +227,5 @@ namespace Assignment6
                 Console.WriteLine("Failed to add address: " + ex.Message);
             }
         }
-    }
-}
+    } //End of Program
+} //End of namespace

@@ -37,7 +37,6 @@ This project simulates a mobile device system that manages various applications.
 | Menu             | Option 3: Navigate & safe travel message                 | ✅ Done      | -        |
 | Validation       | Integrate validator in all property setters              | ✅ Done      | -        |
 | README.md        | Final summary and checklist                              | ✅ Done      | -        |
-| Final polish     | Clean `using` statements, remove redundancy              | ⬜ Reminder  | Final    |
 
 ---
 
