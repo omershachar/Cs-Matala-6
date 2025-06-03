@@ -21,23 +21,23 @@ This project simulates a mobile device system that manages various applications.
 
 ## TODO & Progress
 
-| Component        | Task                                                    | Status       | Priority |
+| Component        | Task                                                     | Status       | Priority |
 |------------------|----------------------------------------------------------|--------------|----------|
-| AppSystem        | Implement base structure                                 | ✅ Done       | -        |
-| AppSystem        | Auto-generate special number (optional)                  | ⬜ Not done   | Low      |
-| Social           | Create class, connect to validator                       | ✅ Done       | -        |
-| Social           | Override abstract method                                 | ✅ Done       | -        |
-| Navigation       | Design class, include manager                            | ✅ Done       | -        |
-| Navigation       | Connect with NavigationManager logic                     | ✅ Done       | -        |
-| NavigationManager| Add location tracking + enum + display methods           | ✅ Done       | -        |
-| MobileDevice     | Add, sort, and compare apps                              | ✅ Done       | -        |
-| MobileDevice     | Full login flow with retry                              | ✅ Done       | -        |
-| Menu             | Add app / show / sort / print / safe travel flow         | ✅ Done       | -        |
-| Menu             | Clear UI + return prompt between operations              | ✅ Done       | -        |
-| Menu             | Option 3: Navigate & safe travel message                 | ✅ Done       | -        |
-| Validation       | Integrate validator in all property setters              | ✅ Done       | -        |
-| Final polish     | Clean `using` statements, remove redundancy              | ⬜ Reminder   | Final    |
-| README.md        | Final summary and checklist                              | ✅ Done       | -        |
+| AppSystem        | Implement base structure                                 | ✅ Done      | -        |
+| AppSystem        | Auto-generate special number (optional)                  | ✅ Done      | -        |
+| Social           | Create class, connect to validator                       | ✅ Done      | -        |
+| Social           | Override abstract method                                 | ✅ Done      | -        |
+| Navigation       | Design class, include manager                            | ✅ Done      | -        |
+| Navigation       | Connect with NavigationManager logic                     | ✅ Done      | -        |
+| NavigationManager| Add location tracking + enum + display methods           | ✅ Done      | -        |
+| MobileDevice     | Add, sort, and compare apps                              | ✅ Done      | -        |
+| MobileDevice     | Full login flow with retry                               | ✅ Done      | -        |
+| Menu             | Add app / show / sort / print / safe travel flow         | ✅ Done      | -        |
+| Menu             | Clear UI + return prompt between operations              | ✅ Done      | -        |
+| Menu             | Option 3: Navigate & safe travel message                 | ✅ Done      | -        |
+| Validation       | Integrate validator in all property setters              | ✅ Done      | -        |
+| README.md        | Final summary and checklist                              | ✅ Done      | -        |
+| Final polish     | Clean `using` statements, remove redundancy              | ⬜ Reminder  | Final    |
 
 ---
 
