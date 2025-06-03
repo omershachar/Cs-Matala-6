@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assignment6.Utilities;
 
-namespace Assignment6.Utilities
+namespace Assignment6
 {
     public abstract class AppSystem
     {
+        //Static counter for unique IDs
+        private static int counter = 1;
+
         //Fields
         int specialNum;
         string appName;
@@ -18,7 +22,7 @@ namespace Assignment6.Utilities
         public int SpecialNum
         {
             get => specialNum;
-            set => specialNum = value; //Removed set??
+            private set => specialNum = value; //no need to set externally, only incremented internally
         }
 
         public string AppName
@@ -36,15 +40,15 @@ namespace Assignment6.Utilities
         public DateTime Date
         {
             get => date;
-            set => date = Validator.IsDateValid(value) ? value : throw new ArgumentException("Invalid date"); 
+            set => date = Validator.IsDateValid(value) ? value : throw new ArgumentException("Invalid date");
         }
 
-        //Constructors
+        //Constructor
         public AppSystem(string appName, int discountPrice)
         {
             AppName = appName;
             DiscountPrice = discountPrice;
-            SpecialNum = 1 + this.SpecialNum;
+            SpecialNum = counter++;
             Date = DateTime.Today;
         }
 
@@ -54,11 +58,6 @@ namespace Assignment6.Utilities
             return $"App Name: {AppName}, Special Number: {SpecialNum}, Discount Price: {DiscountPrice}, Date: {Date.ToShortDateString()}";
         }
 
-        public abstract string AppSystemPurpose(); //That's good enough??
-
-        public interface IComparable //Like this??
-        {
-            bool CompareTo(AppSystem other);
-        }
+        public abstract string AppSystemPurpose();
     }
 }
